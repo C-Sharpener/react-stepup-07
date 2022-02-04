@@ -1,12 +1,19 @@
-import React, { useContext } from "react";
+import React, { memo, useContext } from "react";
 import styled from "styled-components";
 import { UserContext } from "../../../providers/UserProvider";
 
-export const UserIconWithName = (props) => {
+// export const UserIconWithName = (props) => {
+export const UserIconWithName = memo((props) => {
+  console.log("UserIconWithName");
+
   // const { image, name } = props;
-  const { image, name, isAdmin } = props;
-  const context = useContext(UserContext);
-  console.log(context);
+  // const { image, name, isAdmin } = props;
+  const { image, name } = props;
+  // const context = useContext(UserContext);
+  // console.log(context);
+  const { userInfo } = useContext(UserContext);
+  const isAdmin = userInfo ? userInfo.isAdmin : false;
+
   return (
     // <div>
     <SContainer>
@@ -20,7 +27,8 @@ export const UserIconWithName = (props) => {
     </SContainer>
     // </div>
   );
-};
+});
+// };
 
 const SContainer = styled.div`
   text-align: center;

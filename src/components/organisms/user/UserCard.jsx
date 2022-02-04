@@ -1,10 +1,14 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { Card } from "../../atoms/card/Card";
 import { UserIconWithName } from "../../molecules/user/UserIconWithName";
 
-export const UserCard = (props) => {
+// export const UserCard = (props) => {
+export const UserCard = memo((props) => {
+  console.log("UserCard");
   // const { user } = props;
-  const { user, isAdmin } = props;
+  // const { user, isAdmin } = props;
+  const { user } = props;
   return (
     // <div>
     <Card>
@@ -19,7 +23,8 @@ export const UserCard = (props) => {
       {/* <p>名前</p> */}
       {/* <p>{user.name}</p> */}
       {/* <dl> */}
-      <UserIconWithName image={user.image} name={user.name} isAdmin={isAdmin} />
+      {/* <UserIconWithName image={user.image} name={user.name} isAdmin={isAdmin} /> */}
+      <UserIconWithName image={user.image} name={user.name} />
       <SDl>
         <dt>メール</dt>
         {/* <dd>1111@aaa.com</dd> */}
@@ -38,7 +43,8 @@ export const UserCard = (props) => {
     </Card>
     // </div>
   );
-};
+});
+// };
 
 const SDl = styled.dl`
   text-align: left;
